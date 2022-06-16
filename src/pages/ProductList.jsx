@@ -8,6 +8,8 @@ import { toast } from "react-toastify"
 
 export default function ProductList() {
 
+  // let cartArray = []
+
   const dispatch = useDispatch()
 
   const [products, setProducts] = useState([]);
@@ -17,9 +19,12 @@ export default function ProductList() {
     productService.getProducts().then(result => setProducts(result.data.data))
   }, [])
 
+  
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    toast.success(`${product.productName} sepete eklendi!`)
+    // cartArray.push(product.productId);
+    toast.success(`${product.productName} sepete eklendi!`);
+    //console.log("ahandaburdaarray"+cartArray);
   }
 
   return (
@@ -38,7 +43,7 @@ export default function ProductList() {
 
         <Table.Body>
           {products.map((product) => (
-            <Table.Row key={product.id}>
+            <Table.Row key={product.productName}>
               <Table.Cell><Link to={`/products/${product.productName}`}>{product.productName}</Link></Table.Cell>
               <Table.Cell>{product.unitPrice}</Table.Cell>
               <Table.Cell>{product.unitsInStock}</Table.Cell>
