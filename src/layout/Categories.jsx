@@ -6,11 +6,25 @@ export default function Categories() {
         <div>
             <Menu pointing vertical>
                 <Menu.Item
-                    name='home'/>
+                    name='Telefon' />
                 <Menu.Item
-                    name='messages'/>
+                    name='Bilgisayar' />
                 <Menu.Item
-                    name='friends'/>
+                    name='Tv, Ev Elektroniği' />
+                <Menu.Item
+                    name='Bilgisayar Parçaları' />
+                <Menu.Item
+                    name='Foto, Kamera' />
+                <Menu.Item
+                    name='Ofis, Kırtasiye' />
+                <Menu.Item
+                    name='Aksesuar' />
+                <Menu.Item
+                    name='Oyun, Hobi' />
+                <Menu.Item
+                    name='Ev, Mutfak' />
+                <Menu.Item
+                    name='Kişisel Bakım' />
             </Menu>
         </div>
     )

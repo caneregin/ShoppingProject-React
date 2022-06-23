@@ -26,7 +26,7 @@ export default function ProductList() {
     toast.success(`${product.productName} sepete eklendi!`);
     //console.log("ahandaburdaarray"+cartArray);
   }
-
+console.log("HAHAHAHAHHA"+JSON.stringify(products.productName))
   return (
     <div>
       <Table celled>
