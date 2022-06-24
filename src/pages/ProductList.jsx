@@ -7,16 +7,13 @@ import { addToCart } from "../store/actions/cartActions"
 import { toast } from "react-toastify"
 
 export default function ProductList() {
-
-  // let cartArray = []
-
   const dispatch = useDispatch()
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     let productService = new ProductService()
-    productService.getProducts().then(result => setProducts(result.data.data))
+    productService.getProductWithCategoryDetailsAccordingToCategoryName("Bilgisayar").then(result => setProducts(result.data.data))
   }, [])
 
   
@@ -26,18 +23,16 @@ export default function ProductList() {
     toast.success(`${product.productName} sepete eklendi!`);
     //console.log("ahandaburdaarray"+cartArray);
   }
-console.log("HAHAHAHAHHA"+JSON.stringify(products.productName))
+console.log("HAHAHAHAHHA"+(products))
   return (
     <div>
       <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Ürün Adı</Table.HeaderCell>
-            <Table.HeaderCell>Birim Fiyatı</Table.HeaderCell>
-            <Table.HeaderCell>Stok Adedi</Table.HeaderCell>
             <Table.HeaderCell>Açıklama</Table.HeaderCell>
+            <Table.HeaderCell>Birim Fiyatı</Table.HeaderCell>
             <Table.HeaderCell>Kategori</Table.HeaderCell>
-            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -45,10 +40,9 @@ console.log("HAHAHAHAHHA"+JSON.stringify(products.productName))
           {products.map((product) => (
             <Table.Row key={product.productName}>
               <Table.Cell><Link to={`/products/${product.productName}`}>{product.productName}</Link></Table.Cell>
+              <Table.Cell>{product.productDetail}</Table.Cell>
               <Table.Cell>{product.unitPrice}</Table.Cell>
-              <Table.Cell>{product.unitsInStock}</Table.Cell>
-              <Table.Cell></Table.Cell>
-              <Table.Cell></Table.Cell>
+              <Table.Cell>{product.categoryName}</Table.Cell>
               <Table.Cell><Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
             </Table.Row>
           ))

@@ -7,9 +7,9 @@ import { useState } from 'react'
 export default function CartSummary() {
   let currentUser = localStorage.getItem("currentUser")
   const { cartItems } = useSelector(state => state.cart)
-  const [data, setData] = useState({
-    productName: ""
-  })
+  // const [data, setData] = useState({
+  //   productName: ""
+  // })
   const NavLink = () => {
     axios({
       method: "PUT",
