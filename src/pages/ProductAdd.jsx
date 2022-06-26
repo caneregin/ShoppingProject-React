@@ -35,6 +35,7 @@ export default function ProductAdd() {
                     <KodlamaIoTextInput name="unitPrice" placeholder="Ürün fiyatı"/>
                     <KodlamaIoTextInput name="unitsInStock" placeholder="Ürün stok"/>
                     <Field component="select" name="category.categoryId" placeholder="select options">
+                    <option value="0">Kategori Seçiniz</option>
                     <option value="1">Telefon</option>
                     <option value="2">Bilgisayar</option>
                     <option value="3">Tv Ev Elektroniği</option>
@@ -46,7 +47,7 @@ export default function ProductAdd() {
                     <option value="9">Ev Mutfak</option>
                     <option value="10">Kişisel Bakım</option>
                     </Field>
-                    <Field component="select" name="category.categoryName" placeholder="select options">
+                    {/* <Field component="select" name="category.categoryName" placeholder="select options">
                     <option value="Telefon">Telefon</option>
                     <option value="Bilgisayar">Bilgisayar</option>
                     <option value="Tv Ev Elektroniği">Tv Ev Elektroniği</option>
@@ -57,7 +58,7 @@ export default function ProductAdd() {
                     <option value="Oyun Hobi">Oyun Hobi</option>
                     <option value="Ev Mutfak">Ev Mutfak</option>
                     <option value="Kişisel Bakım">Kişisel Bakım</option>
-                    </Field>
+                    </Field> */}
                     <Button color="green" type='submit'>Ekle</Button>
                 </Form> 
             </Formik>

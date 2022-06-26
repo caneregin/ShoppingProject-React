@@ -1,64 +1,42 @@
 import React from 'react'
-import { useState } from 'react'
 import { Menu } from 'semantic-ui-react'
+import { useDispatch } from 'react-redux';
+import { changeToCategory } from '../store/actions/categoryChangerActions';
 
 export default function Categories() {
-    const [changeCategory, setChangeCategory] = useState("Telefon")
+    const dispatch = useDispatch()
 
-    function Category1() {
-        setChangeCategory("Telefon")
-    }
-    function Category2() {
-        setChangeCategory("Bilgisayar")
-    }
-    function Category3() {
-        setChangeCategory("Tv, Ev Elektroniği")
-    }
-    function Category4() {
-        setChangeCategory("Bilgisayar Parçaları")
-    }
-    function Category5() {
-        setChangeCategory("Foto, Kamera")
-    }
-    function Category6() {
-        setChangeCategory("Ofis, Kırtasiye")
-    }
-    function Category7() {
-        setChangeCategory("Aksesuar")
-    }
-    function Category8() {
-        setChangeCategory("Oyun, Hobi")
-    }
-    function Category9() {
-        setChangeCategory("Ev, Mutfak")
-    }
-    function Category10() {
-        setChangeCategory("Kişisel Bakım")
-    }
+    const handleChangeToCategory = (changestate) => {
+        dispatch(changeToCategory(changestate));
+        // cartArray.push(product.productId);
+        //toast.success(`${product.productName} sepete eklendi!`);
+        //console.log("ahandaburdaarray"+cartArray);
+      }
     return (
         <div>
             <Menu pointing vertical>
-                <Menu.Item
+            <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
                     name='Tüm Ürünler' />
-                <Menu.Item onClick={Category1}
-                    name='Telefon' />
-                <Menu.Item onClick={Category2}
+                <Menu.Item onClick={()=>handleChangeToCategory("Telefon")}
+                    name='Telefon'><img src={require('../images/reactimg.png')} />
+                    </Menu.Item>
+                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar")}
                     name='Bilgisayar' />
-                <Menu.Item onClick={Category3}
-                    name='Tv, Ev Elektroniği' />
-                <Menu.Item onClick={Category4}
+                <Menu.Item onClick={()=>handleChangeToCategory("Tv Ev Elektroniği")}
+                    name='Tv Ev Elektroniği' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
                     name='Bilgisayar Parçaları' />
-                <Menu.Item onClick={Category5}
+                <Menu.Item onClick={()=>handleChangeToCategory("Foto, Kamera")}
                     name='Foto, Kamera' />
-                <Menu.Item onClick={Category6}
-                    name='Ofis, Kırtasiye' />
-                <Menu.Item onClick={Category7}
+                <Menu.Item onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
+                    name='Ofis Kırtasiye' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Aksesuar")}
                     name='Aksesuar' />
-                <Menu.Item onClick={Category8}
-                    name='Oyun, Hobi' />
-                <Menu.Item onClick={Category9}
+                <Menu.Item onClick={()=>handleChangeToCategory("Oyun Hobi")}
+                    name='Oyun Hobi' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Ev, Mutfak")}
                     name='Ev, Mutfak' />
-                <Menu.Item onClick={Category10}
+                <Menu.Item onClick={()=>handleChangeToCategory("Kişisel Bakım")}
                     name='Kişisel Bakım' />
             </Menu>
         </div>

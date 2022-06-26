@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../services/productService'
@@ -8,22 +8,29 @@ import { toast } from "react-toastify"
 
 export default function ProductList() {
   const dispatch = useDispatch()
-
   const [products, setProducts] = useState([]);
 
+  let changestate = useSelector(state => state.changestate)
+
+  let changeArray = []
+  changeArray.push(changestate.payload)
   useEffect(() => {
     let productService = new ProductService()
-    productService.getProductWithCategoryDetailsAccordingToCategoryName("Bilgisayar").then(result => setProducts(result.data.data))
-  }, [])
+    if (changeArray[0] === "TumUrunler") {
+      productService.getProductWithCategoryDetails().then(result => setProducts(result.data.data))
+    } else {
+      productService.getProductWithCategoryDetailsAccordingToCategoryName(changeArray).then(result => setProducts(result.data.data))
+    }
+  }, changeArray)
 
-  
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     // cartArray.push(product.productId);
     toast.success(`${product.productName} sepete eklendi!`);
     //console.log("ahandaburdaarray"+cartArray);
   }
-console.log("HAHAHAHAHHA"+(products))
+  console.log("HAHAHAHAHHA" + (products))
   return (
     <div>
       <Table celled>
@@ -43,7 +50,7 @@ console.log("HAHAHAHAHHA"+(products))
               <Table.Cell>{product.productDetail}</Table.Cell>
               <Table.Cell>{product.unitPrice}</Table.Cell>
               <Table.Cell>{product.categoryName}</Table.Cell>
-              <Table.Cell><Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
+              <Table.Cell><Button onClick={() => handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
             </Table.Row>
           ))
           }
