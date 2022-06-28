@@ -5,6 +5,8 @@ import { Button, Icon, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../services/productService'
 import { addToCart } from "../store/actions/cartActions"
 import { toast } from "react-toastify"
+import { Card, Grid, Image } from 'semantic-ui-react'
+
 
 export default function ProductList() {
   const dispatch = useDispatch()
@@ -23,7 +25,6 @@ export default function ProductList() {
     }
   }, changeArray)
 
-
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     // cartArray.push(product.productId);
@@ -33,7 +34,36 @@ export default function ProductList() {
   console.log("HAHAHAHAHHA" + (products))
   return (
     <div>
-      <Table celled>
+      <Grid columns={3}>
+        <Grid.Row>
+        {products.map((product) => (
+          <Grid.Column key={product.id}><Link to={`/products/${product.id}`}>
+            <Card style={{ margin: 10 }}>
+            <img src={product.productImage} />
+              {/* <Image src='/images/avatar/large/matthew.png' wrapped ui={false} /> */}
+              <Card.Content>
+                <Card.Header>{product.productBrandname}</Card.Header>
+                <Card.Meta>
+                  <span className='date'>{product.productShortname}</span>
+                </Card.Meta>
+                <Card.Description style={{ height: 60 }}>
+                {product.productName}
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a>
+                  <Icon name='user' />
+                  {product.unitPrice}TL
+                </a>
+              </Card.Content>
+            </Card></Link>
+          </Grid.Column>
+          ))
+        }
+        </Grid.Row>
+      </Grid>
+      
+      {/* <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Ürün Adı</Table.HeaderCell>
@@ -42,7 +72,6 @@ export default function ProductList() {
             <Table.HeaderCell>Kategori</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
           {products.map((product) => (
             <Table.Row key={product.productName}>
@@ -54,9 +83,7 @@ export default function ProductList() {
             </Table.Row>
           ))
           }
-
         </Table.Body>
-
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan='3'>
@@ -75,7 +102,7 @@ export default function ProductList() {
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
-      </Table>
+      </Table> */}
     </div>
   )
 }

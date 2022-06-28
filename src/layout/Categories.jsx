@@ -18,7 +18,9 @@ export default function Categories() {
             <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
                     name='Tüm Ürünler' />
                 <Menu.Item onClick={()=>handleChangeToCategory("Telefon")}
-                    name='Telefon'><img src={require('../images/reactimg.png')} />
+                    name='Telefon'>
+                        {/* <img src={require('../images/reactimg.png')}
+                         /> */}
                     </Menu.Item>
                 <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar")}
                     name='Bilgisayar' />
