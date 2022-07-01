@@ -52,7 +52,7 @@ export default function ProductList() {
               </Card.Content>
               <Card.Content extra>
                 <a>
-                  <Icon name='user' />
+                  <Icon name='cart' />
                   {product.unitPrice}TL
                 </a>
               </Card.Content>

@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import categoryChangerReducer from "./reducers/categoryChangerReducer"
+// import { combineReducers } from "redux";
+// import categoryChangerReducer from "./reducers/categoryChangerReducer"
 
-const rootchangeReducer = combineReducers({
-    changestate :categoryChangerReducer,
-})
+// const rootchangeReducer = combineReducers({
+//     changestate :categoryChangerReducer,
+// })
 
-export default rootchangeReducer;
+// export default rootchangeReducer;

@@ -1,19 +1,46 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeToCategory } from '../store/actions/categoryChangerActions';
+import { useHistory } from 'react-router-dom';
 
 export default function Categories() {
     const dispatch = useDispatch()
-
+    let history = useHistory()
     const handleChangeToCategory = (changestate) => {
+        history.push("/")
         dispatch(changeToCategory(changestate));
         // cartArray.push(product.productId);
         //toast.success(`${product.productName} sepete eklendi!`);
         //console.log("ahandaburdaarray"+cartArray);
       }
+      let changestatetoggle = useSelector(state => state.changestatetoggle)
+      console.log(changestatetoggle.payload+"EASICIKITIGER")
     return (
         <div>
+            {changestatetoggle.payload === "True" ? 
+            <Menu pointing vertical>
+            <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
+                    name='Üyelik Bilgilerim' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Telefon")}
+                    name='Adres Bilgilerim'>
+                        {/* <img src={require('../images/reactimg.png')}
+                         /> */}
+                    </Menu.Item>
+                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar")}
+                    name='Siparişlerim' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Tv Ev Elektroniği")}
+                    name='Favorilerim' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
+                    name='Mesajlarım' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Foto, Kamera")}
+                    name='Şifre Değiştirme' />
+                <Menu.Item onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
+                    name='Çıkış' />
+            </Menu>
+            
+            :
+            
             <Menu pointing vertical>
             <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
                     name='Tüm Ürünler' />
@@ -41,6 +68,9 @@ export default function Categories() {
                 <Menu.Item onClick={()=>handleChangeToCategory("Kişisel Bakım")}
                     name='Kişisel Bakım' />
             </Menu>
+            
+            }
+            
         </div>
     )
 }
