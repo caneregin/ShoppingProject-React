@@ -1,20 +1,30 @@
 import { Form, Formik, Field } from 'formik'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as Yup from "yup"
 import { Button, Header, Icon } from 'semantic-ui-react'
 import KodlamaIoTextInput from '../utilities/customFormControls/KodlamaIoTextInput'
 import axios from 'axios'
+import UserService from '../services/userService'
 
-const initialValues = { productName: "", productDetail: "", unitPrice: 10, unitsInStock: 100, picked: '' }
+
+let currentUser = localStorage.getItem("currentUser")
+const initialValues = { firstName: "", lastName: "", email: "", phoneNumber: "", gender: "" }
 
 const schema = Yup.object({
-    productName: Yup.string().required("Ürün adı zorunlu"),
-    productDetail: Yup.string().required("Ürün adı zorunlu"),
-    unitPrice: Yup.number().required("Ürün fiyatı zorunlu"),
-    unitsInStock: Yup.number().required("Ürün fiyatı zorunlu"),
-    //category: Yup.number().required("Ürün adı zorunlu")
+    firstName: Yup.string().required("İsim zorunlu"),
+    lastName: Yup.string().required("Soyisim zorunlu"),
+    email: Yup.string().required("Email zorunlu"),
+    phoneNumber: Yup.number().required("Telefon numarası zorunlu"),
+    gender: Yup.string().required("Cinsiyet zorunlu")
 })
+
 export default function UserInfo() {
+    const [user, setUser] = useState([]);
+
+    useEffect(()=>{
+      let userService = new UserService()
+      userService.getByUserId(localStorage.getItem("currentUser")).then(result=>setUser(result.data))
+    },[])
     return (
         <div>
             <Header as="h1">Üyelik Bilgilerim</Header>
@@ -26,27 +36,27 @@ export default function UserInfo() {
                 validationSchema={schema}
                 onSubmit={(values) => {
                     console.log(values)
-                    // axios({
-                    //     method: "post",
-                    //     url: "http://localhost:8080/api/products/add",
-                    //     data: values
-                    // })
+                    axios({
+                        method: "put",
+                        //url:"http://localhost:8080/api/users/updateUser?userid=3&firstName=amanda&lastName=flower&email=easytigitiker&phoneNumber=5338888388&gender=kadin"
+                        url: "http://localhost:8080/api/users/updateUser?userid="+currentUser+"&firstName=" + values.firstName + "&lastName=" + values.lastName + "&email=" + values.email + "&phoneNumber=" + values.phoneNumber + "&gender=" + values.gender
+                        //data: values
+                    })
                 }}
             >
                 <Form className='ui form'>
-                    <KodlamaIoTextInput name="firstName" placeholder="İsim" />
-                    <KodlamaIoTextInput name="lastName" placeholder="Soyisim" />
-                    <KodlamaIoTextInput name="email" placeholder="Email" />
-                    <KodlamaIoTextInput name="phoneNumber" placeholder="Telefon" />
+                    <KodlamaIoTextInput name="firstName" placeholder={user.firstName}/>
+                    <KodlamaIoTextInput name="lastName" placeholder={user.lastName} />
+                    <KodlamaIoTextInput name="email" placeholder={user.email} />
+                    <KodlamaIoTextInput name="phoneNumber" placeholder={user.phoneNumber} />
                     <div role="group" aria-labelledby="my-radio-group">
                         <label>
-                        <Icon name='venus' />Kadın<Field type="radio" name="gender" value="Kadın" />
-                            
+                            <Icon name='venus' />Kadın<Field type="radio" name="gender" value="Kadın" />
                         </label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label>
-                        <Icon name='mars' />Erkek<Field type="radio" name="gender" value="Erkek" />
-                            
+                            <Icon name='mars' />Erkek<Field type="radio" name="gender" value="Erkek" />
+
                         </label>
                     </div>
                     {/* <Field component="select" name="category.categoryName" placeholder="select options">
@@ -64,7 +74,7 @@ export default function UserInfo() {
                     <Button color="green" type='submit'>BİLGİLERİMİ KAYDET</Button>
                 </Form>
             </Formik>
-            
+
         </div>
 
     )

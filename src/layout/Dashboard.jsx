@@ -10,6 +10,10 @@ import ProductAdd from '../pages/ProductAdd'
 import AuthLog from '../pages/AuthLog'
 import AuthReg from '../pages/AuthReg'
 import UserInfo from '../pages/UserInfo'
+import UserInfoAddress from '../pages/UserInfoAddress'
+import UserInfoFav from '../pages/UserInfoFav'
+import UserInfoMessages from '../pages/UserInfoMessages'
+import OrderDetail from '../pages/OrderDetail'
 
 export default function Dashboard() {
   return (
@@ -25,7 +29,11 @@ export default function Dashboard() {
           <Route exact path="/products" component={ProductList}></Route>
           <Route path="/products/:name" component={ProductDetail}></Route>
           <Route path="/cart" component={CartDetail}></Route>
+          <Route path="/order" component={OrderDetail}></Route>
           <Route path="/user" component={UserInfo}></Route>
+          <Route path="/useraddress" component={UserInfoAddress}></Route>
+          <Route path="/userfav" component={UserInfoFav}></Route>
+          <Route path="/usermessages" component={UserInfoMessages}></Route>
           <Route path="/product/add" component={ProductAdd}></Route>
           <Route exact path="/auth">
           {localStorage.getItem("currentUser") !=null ? <Redirect to="/" />:<AuthLog/>}

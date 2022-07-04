@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux'
 import { Dropdown, Label } from 'semantic-ui-react'
 import axios from 'axios'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 export default function CartSummary() {
   let currentUser = localStorage.getItem("currentUser")
   const { cartItems } = useSelector(state => state.cart)
+  let history = useHistory()
   // const [data, setData] = useState({
   //   productName: ""
   // })
@@ -16,6 +18,7 @@ export default function CartSummary() {
       url: "http://localhost:8080/api/users/updateCart?&userid=" + currentUser,
       data: cartArray
     })
+    history.push("/cart")
   }
   //cartItems.map((cartItembir) => (cartArray.push(cartItembir.product.productName)))
 

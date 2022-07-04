@@ -1,5 +1,6 @@
 export const ADD_TO_CART = "ADD_TO_CART"
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
+export const RESET_CART = "RESET_CART"
 
 export function addToCart(product){
     return {
@@ -11,5 +12,10 @@ export function removeFromCart(product){
     return {
         type : REMOVE_FROM_CART,
         payload: product
+    }
+}
+export function resetCart(){
+    return {
+        type : RESET_CART
     }
 }

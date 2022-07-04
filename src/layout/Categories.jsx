@@ -16,26 +16,48 @@ export default function Categories() {
       }
       let changestatetoggle = useSelector(state => state.changestatetoggle)
       console.log(changestatetoggle.payload+"EASICIKITIGER")
+      const handleChangeToUyeInfo = () => {
+        history.push("/user")
+      }
+      const handleChangeToUyeAddress = () => {
+        history.push("/useraddress")
+      }
+      const handleChangeToUyeOrders = () => {
+        history.push("/order")
+      }
+      const handleChangeToUyeFav = () => {
+        history.push("/userfav")
+      }
+      const handleChangeToUyeMessages = () => {
+        history.push("/usermessages")
+      }
+      const handleChangeToUyePw = () => {
+        history.push("/")
+      }
+      const handleChangeToUyeLogOut = () => {
+        localStorage.removeItem("tokenKey")
+        localStorage.removeItem("currentUser")
+        localStorage.removeItem("userName")
+        history.go("/")
+      }
     return (
         <div>
             {changestatetoggle.payload === "True" ? 
             <Menu pointing vertical>
-            <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
+            <Menu.Item onClick={()=>handleChangeToUyeInfo()}
                     name='Üyelik Bilgilerim' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Telefon")}
+                <Menu.Item onClick={()=>handleChangeToUyeAddress()}
                     name='Adres Bilgilerim'>
-                        {/* <img src={require('../images/reactimg.png')}
-                         /> */}
                     </Menu.Item>
-                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar")}
+                <Menu.Item onClick={()=>handleChangeToUyeOrders()}
                     name='Siparişlerim' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Tv Ev Elektroniği")}
+                <Menu.Item onClick={()=>handleChangeToUyeFav()}
                     name='Favorilerim' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
+                <Menu.Item onClick={()=>handleChangeToUyeMessages()}
                     name='Mesajlarım' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Foto, Kamera")}
+                <Menu.Item onClick={()=>handleChangeToUyePw()}
                     name='Şifre Değiştirme' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
+                <Menu.Item onClick={()=>handleChangeToUyeLogOut()}
                     name='Çıkış' />
             </Menu>
             
