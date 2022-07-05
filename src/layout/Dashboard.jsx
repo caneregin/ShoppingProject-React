@@ -14,13 +14,42 @@ import UserInfoAddress from '../pages/UserInfoAddress'
 import UserInfoFav from '../pages/UserInfoFav'
 import UserInfoMessages from '../pages/UserInfoMessages'
 import OrderDetail from '../pages/OrderDetail'
+import { useSelector } from 'react-redux'
 
 export default function Dashboard() {
+  let changestatetoggle = useSelector(state => state.changestatetoggle)
   return (
     <div>
       <ToastContainer position='bottom-right'/>
       <Grid>
-        <Grid.Row>
+      {changestatetoggle.payload === "False" ? 
+      
+      <Grid.Row height={4}>
+        <Categories />
+          {/* <Grid.Column width={4}>
+            
+          </Grid.Column> */}
+          {/* <Grid.Column width={12}> */}
+          <Route exact path="/" component={ProductList}></Route>
+          <Route exact path="/products" component={ProductList}></Route>
+          <Route path="/products/:name" component={ProductDetail}></Route>
+          <Route path="/cart" component={CartDetail}></Route>
+          <Route path="/order" component={OrderDetail}></Route>
+          <Route path="/user" component={UserInfo}></Route>
+          <Route path="/useraddress" component={UserInfoAddress}></Route>
+          <Route path="/userfav" component={UserInfoFav}></Route>
+          <Route path="/usermessages" component={UserInfoMessages}></Route>
+          <Route path="/product/add" component={ProductAdd}></Route>
+          <Route exact path="/auth">
+          {localStorage.getItem("currentUser") !=null ? <Redirect to="/" />:<AuthLog/>}
+          </Route>
+          <Route exact path="/authReg" component={AuthReg}></Route>
+          {/* </Grid.Column> */}
+        </Grid.Row>
+      
+      :
+      
+      <Grid.Row>
           <Grid.Column width={4}>
             <Categories />
           </Grid.Column>
@@ -41,6 +70,9 @@ export default function Dashboard() {
           <Route exact path="/authReg" component={AuthReg}></Route>
           </Grid.Column>
         </Grid.Row>
+      
+      }
+        
       </Grid>
     </div>
   )

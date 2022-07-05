@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Dropdown, Menu, Image } from 'semantic-ui-react'
+import { Dropdown, Menu, Image, Icon } from 'semantic-ui-react'
 import { useHistory } from "react-router-dom"
 import UserService from '../services/userService'
 import { useDispatch } from 'react-redux';
@@ -34,7 +34,7 @@ export default function SignedIn(props) {
     return (
         <div>
             <Menu.Item>
-             <Image avatar spaced="right" src="https://i0.wp.com/shiftdelete.net/wp-content/uploads/2022/03/recep-ivedik-7-ilk-video.jpg?fit=1280%2C720&ssl=1" />
+             <Icon name='user' />
                 <Dropdown pointing="top left" text={user.userName}>
                     <Dropdown.Menu>
                         <Dropdown.Item text="Bilgilerim" onClick={() => handleChangetoToggle("True")} icon="info" />

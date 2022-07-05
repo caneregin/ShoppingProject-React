@@ -6,6 +6,7 @@ import ProductService from '../services/productService'
 import { addToCart } from "../store/actions/cartActions"
 import { toast } from "react-toastify"
 import { Card, Grid, Image } from 'semantic-ui-react'
+import ImageSliderApp from '../layout/ImageSliderApp';
 
 
 export default function ProductList() {
@@ -34,7 +35,8 @@ export default function ProductList() {
   console.log("HAHAHAHAHHA" + (products))
   return (
     <div>
-      <Grid columns={3}>
+      <ImageSliderApp/>
+      <Grid columns={4}>
         <Grid.Row>
         {products.map((product) => (
           <Grid.Column key={product.id}><Link to={`/products/${product.id}`}>
@@ -62,7 +64,6 @@ export default function ProductList() {
         }
         </Grid.Row>
       </Grid>
-      
       {/* <Table celled>
         <Table.Header>
           <Table.Row>

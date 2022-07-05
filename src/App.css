@@ -4,7 +4,91 @@
 html {
   font-size: 10px;
 }
-
+.categoriesMenuMenuItem1{
+  height: 3rem;
+  width: 5.8rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem2{
+  height: 3rem;
+  width: 6.9rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem3{
+  height: 3rem;
+  width: 10.1rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem4{
+  height: 3rem;
+  width: 11.2rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem5{
+  height: 3rem;
+  width: 8.5rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem6{
+  height: 3rem;
+  width: 8.9rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem7{
+  height: 3rem;
+  width: 6.8rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem8{
+  height: 3rem;
+  width: 7.8rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem9{
+  height: 3rem;
+  width: 7.3rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem10{
+  height: 3rem;
+  width: 9rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem11{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem12{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem13{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem14{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem15{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem16{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
+.categoriesMenuMenuItem17{
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.05rem;
+}
 .ui.main.container {
   margin-top: 4em;
 }

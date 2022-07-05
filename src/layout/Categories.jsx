@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeToCategory } from '../store/actions/categoryChangerActions';
 import { useHistory } from 'react-router-dom';
+import "../App.css"
 
 export default function Categories() {
     const dispatch = useDispatch()
@@ -43,51 +44,51 @@ export default function Categories() {
     return (
         <div>
             {changestatetoggle.payload === "True" ? 
-            <Menu pointing vertical>
-            <Menu.Item onClick={()=>handleChangeToUyeInfo()}
+             <Menu pointing vertical>
+            <Menu.Item className="categoriesMenuMenuItem11" onClick={()=>handleChangeToUyeInfo()}
                     name='Üyelik Bilgilerim' />
-                <Menu.Item onClick={()=>handleChangeToUyeAddress()}
+                <Menu.Item className="categoriesMenuMenuItem12" onClick={()=>handleChangeToUyeAddress()}
                     name='Adres Bilgilerim'>
                     </Menu.Item>
-                <Menu.Item onClick={()=>handleChangeToUyeOrders()}
+                <Menu.Item className="categoriesMenuMenuItem13" onClick={()=>handleChangeToUyeOrders()}
                     name='Siparişlerim' />
-                <Menu.Item onClick={()=>handleChangeToUyeFav()}
+                <Menu.Item className="categoriesMenuMenuItem14" onClick={()=>handleChangeToUyeFav()}
                     name='Favorilerim' />
-                <Menu.Item onClick={()=>handleChangeToUyeMessages()}
+                <Menu.Item className="categoriesMenuMenuItem15" onClick={()=>handleChangeToUyeMessages()}
                     name='Mesajlarım' />
-                <Menu.Item onClick={()=>handleChangeToUyePw()}
+                <Menu.Item className="categoriesMenuMenuItem16" onClick={()=>handleChangeToUyePw()}
                     name='Şifre Değiştirme' />
-                <Menu.Item onClick={()=>handleChangeToUyeLogOut()}
+                <Menu.Item className="categoriesMenuMenuItem17" onClick={()=>handleChangeToUyeLogOut()}
                     name='Çıkış' />
             </Menu>
             
             :
             
-            <Menu pointing vertical>
-            <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
-                    name='Tüm Ürünler' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Telefon")}
+            <Menu>
+            {/* <Menu.Item onClick={()=>handleChangeToCategory("TumUrunler")}
+                    name='Tüm Ürünler' /> */}
+                <Menu.Item className="categoriesMenuMenuItem1" onClick={()=>handleChangeToCategory("Telefon")}
                     name='Telefon'>
                         {/* <img src={require('../images/reactimg.png')}
                          /> */}
                     </Menu.Item>
-                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar")}
+                <Menu.Item className="categoriesMenuMenuItem2" onClick={()=>handleChangeToCategory("Bilgisayar")}
                     name='Bilgisayar' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Tv Ev Elektroniği")}
+                <Menu.Item className="categoriesMenuMenuItem3" onClick={()=>handleChangeToCategory("Tv Ev Elektroniği")}
                     name='Tv Ev Elektroniği' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
+                <Menu.Item className="categoriesMenuMenuItem4" onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
                     name='Bilgisayar Parçaları' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Foto, Kamera")}
+                <Menu.Item className="categoriesMenuMenuItem5" onClick={()=>handleChangeToCategory("Foto, Kamera")}
                     name='Foto, Kamera' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
+                <Menu.Item className="categoriesMenuMenuItem6" onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
                     name='Ofis Kırtasiye' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Aksesuar")}
+                <Menu.Item className="categoriesMenuMenuItem7" onClick={()=>handleChangeToCategory("Aksesuar")}
                     name='Aksesuar' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Oyun Hobi")}
+                <Menu.Item className="categoriesMenuMenuItem8" onClick={()=>handleChangeToCategory("Oyun Hobi")}
                     name='Oyun Hobi' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Ev, Mutfak")}
+                <Menu.Item className="categoriesMenuMenuItem9" onClick={()=>handleChangeToCategory("Ev, Mutfak")}
                     name='Ev, Mutfak' />
-                <Menu.Item onClick={()=>handleChangeToCategory("Kişisel Bakım")}
+                <Menu.Item className="categoriesMenuMenuItem10" onClick={()=>handleChangeToCategory("Kişisel Bakım")}
                     name='Kişisel Bakım' />
             </Menu>
             
