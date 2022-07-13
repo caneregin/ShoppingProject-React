@@ -35,7 +35,7 @@ export default function SignedIn(props) {
         <div>
             <Menu.Item>
              <Icon name='user' />
-                <Dropdown pointing="top left" text={user.userName}>
+                <Dropdown pointing="top left" text={user.firstName}>
                     <Dropdown.Menu>
                         <Dropdown.Item text="Bilgilerim" onClick={() => handleChangetoToggle("True")} icon="info" />
                         <Dropdown.Item onClick={logOut} text="Çıkış yap" icon="sign-out" />

@@ -6,13 +6,16 @@ import KodlamaIoTextInput from '../utilities/customFormControls/KodlamaIoTextInp
 import axios from 'axios'
 
 export default function ProductAdd() {
-    const initialValues = { productName: "", productDetail: "", unitPrice: 10, unitsInStock: 100 }
+    const initialValues = { productName: "", productDetail: "", unitPrice: 10, unitsInStock: 100, productImage: "", productBrandname: "", productShortname: "" }
 
     const schema = Yup.object({
         productName: Yup.string().required("Ürün adı zorunlu"),
         productDetail: Yup.string().required("Ürün adı zorunlu"),
         unitPrice: Yup.number().required("Ürün fiyatı zorunlu"),
         unitsInStock: Yup.number().required("Ürün fiyatı zorunlu"),
+        productImage: Yup.string().required("Ürün adı zorunlu"),
+        productBrandname: Yup.string().required("Ürün adı zorunlu"),
+        productShortname: Yup.string().required("Ürün adı zorunlu")
         //category: Yup.number().required("Ürün adı zorunlu")
     })
 
@@ -34,6 +37,9 @@ export default function ProductAdd() {
                     <KodlamaIoTextInput name="productDetail" placeholder="Ürün detayı"/>
                     <KodlamaIoTextInput name="unitPrice" placeholder="Ürün fiyatı"/>
                     <KodlamaIoTextInput name="unitsInStock" placeholder="Ürün stok"/>
+                    <KodlamaIoTextInput name="productImage" placeholder="Ürün fotoğrafı"/>
+                    <KodlamaIoTextInput name="productBrandname" placeholder="Ürün markası"/>
+                    <KodlamaIoTextInput name="productShortname" placeholder="Ürün kısa adı"/>
                     <Field component="select" name="category.categoryId" placeholder="select options">
                     <option value="0">Kategori Seçiniz</option>
                     <option value="1">Telefon</option>

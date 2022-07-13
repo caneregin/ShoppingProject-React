@@ -63,7 +63,7 @@ export default function CartDetail() {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {users.map((usr) => (
+                    {users?.map((usr) => (
                         <Table.Row key={usr}>
                             <Table.Cell><Link to={`/products/${usr.productName}`}>{usr.productName}</Link></Table.Cell>
                             <Table.Cell>{usr.unitPrice}</Table.Cell>

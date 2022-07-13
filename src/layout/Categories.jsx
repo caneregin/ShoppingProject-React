@@ -42,7 +42,7 @@ export default function Categories() {
         history.go("/")
       }
     return (
-        <div>
+        <div  style={{marginTop:-30}}>
             {changestatetoggle.payload === "True" ? 
              <Menu pointing vertical>
             <Menu.Item className="categoriesMenuMenuItem11" onClick={()=>handleChangeToUyeInfo()}
@@ -78,16 +78,16 @@ export default function Categories() {
                     name='Tv Ev Elektroniği' />
                 <Menu.Item className="categoriesMenuMenuItem4" onClick={()=>handleChangeToCategory("Bilgisayar Parçaları")}
                     name='Bilgisayar Parçaları' />
-                <Menu.Item className="categoriesMenuMenuItem5" onClick={()=>handleChangeToCategory("Foto, Kamera")}
-                    name='Foto, Kamera' />
+                <Menu.Item className="categoriesMenuMenuItem5" onClick={()=>handleChangeToCategory("Foto Kamera")}
+                    name='Foto Kamera' />
                 <Menu.Item className="categoriesMenuMenuItem6" onClick={()=>handleChangeToCategory("Ofis Kırtasiye")}
                     name='Ofis Kırtasiye' />
                 <Menu.Item className="categoriesMenuMenuItem7" onClick={()=>handleChangeToCategory("Aksesuar")}
                     name='Aksesuar' />
                 <Menu.Item className="categoriesMenuMenuItem8" onClick={()=>handleChangeToCategory("Oyun Hobi")}
                     name='Oyun Hobi' />
-                <Menu.Item className="categoriesMenuMenuItem9" onClick={()=>handleChangeToCategory("Ev, Mutfak")}
-                    name='Ev, Mutfak' />
+                <Menu.Item className="categoriesMenuMenuItem9" onClick={()=>handleChangeToCategory("Ev Mutfak")}
+                    name='Ev Mutfak' />
                 <Menu.Item className="categoriesMenuMenuItem10" onClick={()=>handleChangeToCategory("Kişisel Bakım")}
                     name='Kişisel Bakım' />
             </Menu>

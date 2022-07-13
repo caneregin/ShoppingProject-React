@@ -15,6 +15,7 @@ import UserInfoFav from '../pages/UserInfoFav'
 import UserInfoMessages from '../pages/UserInfoMessages'
 import OrderDetail from '../pages/OrderDetail'
 import { useSelector } from 'react-redux'
+import TemporaryPass from './TemporaryPass'
 
 export default function Dashboard() {
   let changestatetoggle = useSelector(state => state.changestatetoggle)
@@ -22,7 +23,7 @@ export default function Dashboard() {
     <div>
       <ToastContainer position='bottom-right'/>
       <Grid>
-      {changestatetoggle.payload === "False" ? 
+      {changestatetoggle.payload === "false" ? 
       
       <Grid.Row height={4}>
         <Categories />
@@ -36,6 +37,7 @@ export default function Dashboard() {
           <Route path="/cart" component={CartDetail}></Route>
           <Route path="/order" component={OrderDetail}></Route>
           <Route path="/user" component={UserInfo}></Route>
+          <Route path="/temp" component={TemporaryPass}></Route>
           <Route path="/useraddress" component={UserInfoAddress}></Route>
           <Route path="/userfav" component={UserInfoFav}></Route>
           <Route path="/usermessages" component={UserInfoMessages}></Route>

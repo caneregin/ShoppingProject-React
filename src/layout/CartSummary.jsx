@@ -18,7 +18,7 @@ export default function CartSummary() {
       url: "http://localhost:8080/api/users/updateCart?&userid=" + currentUser,
       data: cartArray
     })
-    history.push("/cart")
+    history.push("/temp")
   }
   //cartItems.map((cartItembir) => (cartArray.push(cartItembir.product.productName)))
 
