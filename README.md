@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+## E-Ticaret projemin ReactJS tarafıdır. State yönetimi için redux kullanılmıştır. Arayüz büyük oranda semantic-ui ile yazılmıştır. Kullanıcı üye olduktan sonra giriş yapabilir. Giriş yaptığında token üretilir ve seçili sayfalara erişirken token kullanılabilir. Kullanıcı ürünü sepete attıktan sonra önce state olarak veri tutulur. Sepete ekledikten sonra veri geçici olarak veritabanına kaydedilir. Satın alma işlemi gerçekleştikten sonra veya sepet güncellendiğinde geçici veri sürekli güncellenir. Satın aldıktan sonra ürünler sipariş olarak tüm bilgileri ile kaydedilir ve siparişler bölümünde gösterilir. Önce site tanıtımı ve sonrasında kod tanıtımı olarak hazırlanmıştır. Bölüm bölüm detaylıca resimli olarak nerede ne kullanıldığı açıklanmaktadır.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Bölüm 1
+### Anasayfa
+![mainpage1](https://user-images.githubusercontent.com/36435160/179985384-758ce798-1bfa-4c8b-aeac-dabb757bebc5.png)
 
-## Available Scripts
+Turuncu ok işareti ile gösterilen giriş yapmış kullanıcı
 
-In the project directory, you can run:
+Kullanıcı giriş yaptığında oluşturulan token geçici olarak kaydedilir. Kullanıcı bilgisi API ile çekilir. State tanımlanmıştır. useEffect ile kullanıcı verisi çekilir. Kullanıcı ismi gösterilir. Çıkış yapıldığında dispatch ile state verisi güncellenir ve çıkış yapılmış olarak gösterilir.
 
-### `npm start`
+Kırmızı ok işareti ile gösterilen kategori seçimi
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Her bir kategori isim ile tanımlanmıştır. İlgili kategoriye tıklandığında isim bilgisi dispatch ile state tarafına gönderilir. Kategoriler yatay ve dikey olarak state içinde tutulmaktadır. Kullanıcı sayfasına geçildiğinde dikey kategori ve kullanıcıya özel kategoriler belirmektedir.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Mavi ok işareti ile gösterilen resim geçişi
 
-### `npm test`
+Belirtilen saniyelerde resim geçişi olmaktadır. Aynı zamanda kendimiz tıklayarak resim geçişi sağlayabiliriz. Ürün reklamları burada gösterilmektedir.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Mor ok işareti ile gösterilen ürün veya seçim yapılmış ise kategoriye göre listelenmiş ürün listesi
 
-### `npm run build`
+Sayfa ilk açıldığında tüm ürünlerin listesi API ile çekilmektedir. Tüm sayfa semantic-ui GRID yapısındadır. Her ürünün fotoğrafı, kısa bilgisi, markası, fiyatı yine çekilen API aracılığıyla yazılmaktadır. Kategori değişirse ürün listesi güncellenmektedir. Bir ürüne tıklandığında o ürünün detay sayfasına yönlendirilmektedir.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Ürün detayı
+![s1](https://user-images.githubusercontent.com/36435160/179985405-42ea70b5-f275-4be8-b555-41724fb3fbae.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Gri ok işareti ile gösterilen kategori seçimi
+Hangi ürünün kategorisinde olduğu bilgisini sırayla kategori, marka, ürün kısa ismi olarak API aracılığıyla çekmektedir.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Yeşil ok işareti ile gösterilen kategori seçimi
+Ürünün kısa ismi, ismi, fiyatı ve sepete ekleme butonu burada yer almaktadır. Sepete ekle butonuna basınca ürün bilgisi redux ile state içerisine kaydedilmektedir.Detaylı kod bilgisi aşağıda olacaktır.
 
-### `npm run eject`
+Mor ok işareti ile gösterilen kategori seçimi
+Aynı kategorideki ürünler burada gösterilmektedir. Kullanıcı tercih ederse kolaylıkla önerilen ürün sayfasına gidebilir. react elastic carousel kullanılmıştır. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Sarı ok işareti ile gösterilen kategori seçimi
+Farklı sekmeler seçilerek ilgilenilen sekmelere bakılabilir. Ürün detayı resimli ve açıklamalı şekilde yer almaktadır. Burası farklı biçimlerde ayarlanabilir.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Sepet state detayı
+![s5](https://user-images.githubusercontent.com/36435160/179985412-df9b4cf5-4a3d-44cd-8fe8-86647bb1aac0.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Kırmızı ok işareti ile gösterilen sepet bilgisi
+State içerisindeki ürünler burada görülmektedir. 
+Mavi ok işareti ile gösterilen sepet bilgisi
+Sepette görülen ürünleri almak için sepete git butonuna tıklanmaktadır. Sepete git butonuna tıklanınca veriler geçici olarak veritabanına kaydedilir ve sipariş sayfasına yönlendirilir. Sipariş verildikten sonra geçici veri tekrar sıfırlanacaktır.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Sepet detayı
+![s6](https://user-images.githubusercontent.com/36435160/179985429-51ebff1f-33df-42ac-ae4a-87562b47cb38.png)
 
-## Learn More
+Veritabanından gelen geçici sepet bilgisi burada yer almaktadır. Sipariş ver tıkladıktan sonra sepetteki ürünler sipariş olarak kaydedilir ve sepet sıfırlanır.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Sipariş detayı
+![s7](https://user-images.githubusercontent.com/36435160/179985441-d8730ada-d1ac-4873-b075-c49f3e28047c.png)
 
-### Code Splitting
+Kullanıcı siparişler sayfasında kullanıcı tüm siparişlerini ve durumunu görebilir.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Nav search detayı
+![mainpage](https://user-images.githubusercontent.com/36435160/179985444-60df994c-2367-4044-a5c8-0bdbcf31556a.png)
+Veritabanından gelen tüm ürünlerin listesi filtreleme yapılarak search alanında gösterilmektedir.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
