@@ -58,4 +58,45 @@ Kullanıcı siparişler sayfasında kullanıcı tüm siparişlerini ve durumunu 
 ![mainpage](https://user-images.githubusercontent.com/36435160/179985444-60df994c-2367-4044-a5c8-0bdbcf31556a.png)
 Veritabanından gelen tüm ürünlerin listesi filtreleme yapılarak search alanında gösterilmektedir.
 
+## Bölüm 2
 
+### useState ve useSelector kullanımı
+![p1](https://user-images.githubusercontent.com/36435160/180063216-0640f83d-d002-4047-954f-7676fe62d316.png)
+
+Kullanıcı kategori seçimi yapmadıysa tüm ürünler gelecektir. Eğer kategori seçimi yapılmış ise useSelector ile kategori çekilecek ve useEffect içerisinde kullanılacaktır. useEffect içerisinde productService'te yer alan kod çalışacaktır ve sonrasında gelen veriler yukarıda useState'te products olarak tanımlanan yere kaydedilecektir. Kaydedilen veri return kısmında map edilecektir.
+
+### map kullanımı
+![p2](https://user-images.githubusercontent.com/36435160/180063696-eb070bb6-57b2-45f8-9d16-b5c74ed586bb.png)
+
+useState products içerisindeki veriler map edilmiştir. Gelen veriler 4 parçalı GRID içerisinde döngü kullanımıyla yazılmıştır.
+
+### Formik için yup kullanımı ve initial values
+![p3](https://user-images.githubusercontent.com/36435160/180064278-37b9f0d2-b827-45ed-9bc9-45f0294eae06.png)
+
+yup schema ile bazı kurallar verilmektedir.
+
+### Axios, Formik ve useState kullanımı
+![p4](https://user-images.githubusercontent.com/36435160/180064369-0794bd0f-a4bf-4843-89d8-5b080f288c9f.png)
+
+Giriş yapan kullanıcının id bilgisine göre kullanıcı bilgileri useState user içine kaydedilmektedir.
+Formik içerisinde axios ile PUT methodu kullanılmıştır. Form içerisine girilen bilgileri güncellenmesi için kullanılmıştır.
+
+### Axios kullanımı
+![p5](https://user-images.githubusercontent.com/36435160/180064704-c49a33d0-3857-4593-8501-46df00f73fbb.png)
+
+useEffect içerisinde kullanılacak olanlar burada önceden hazır biçimde bulunmaktadır.
+
+### Redux kullanımı
+![p6](https://user-images.githubusercontent.com/36435160/180064830-01db4b02-66be-49d6-bfeb-11e0f706d03f.png)
+
+type ve payload bilgisi yazılmıştır.
+
+![p7](https://user-images.githubusercontent.com/36435160/180064954-df365d5d-eaeb-4e70-afd8-7bdcc8fee177.png)
+
+Bir ürün sepete eklendiğinde eğer o üründen yoksa ürün ismi olarak eklenecek ve adedi 1 olacaktır. Eğer aynı ürünün id mevcut ise, ürün ismi eklenmeyecek sadece adedi 1 artırılacaktır. Initial values olarak bir ürün eklersek sepetteki ilk ürün varsayılan olarak olacaktır.
+
+### Birden fazla reducer
+
+![p8](https://user-images.githubusercontent.com/36435160/180065248-88e4d0e3-926f-4d38-a5fc-c65a151213ce.png)
+
+Birden fazla reducer olma durumunda combine edilmektedir.
