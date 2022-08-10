@@ -19,13 +19,6 @@ export default function CartDetail() {
     users.map((cartItembir) => (cartArray.push(cartItembir.productName)))
     console.log("ahahahahEEESSEEEEEE" + JSON.stringify(cartArray))
     const emptyData = ""
-    //const cartArray = users
-    //users.map((cartItembir) => (cartArray.push(cartItembir)))
-    //cartArr.push(users)
-    //let arr = cartArray.split(',');
-    //console.log("Cararayinilkindeksi" + arr)
-    //const string = users.currentCart;
-    //console.log(abu+"AAAAAAAAAAAAA")
     const NavLink = () => {
         axios({
             method: "post",

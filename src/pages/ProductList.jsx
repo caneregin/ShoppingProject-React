@@ -22,46 +22,44 @@ export default function ProductList() {
     if (changeArray[0] === "TumUrunler") {
       productService.getProductWithCategoryDetails().then(result => setProducts(result.data.data))
     } else {
-      productService.getProductWithCategoryDetailsAccordingToCategoryName(changeArray).then(result => setProducts(result.data.data))
+      productService.getProductWithCategoryDetailsAccordingToCategoryName(changeArray)
+        .then(result => setProducts(result.data.data))
     }
   }, changeArray)
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    // cartArray.push(product.productId);
     toast.success(`${product.productName} sepete eklendi!`);
-    //console.log("ahandaburdaarray"+cartArray);
   }
   console.log("HAHAHAHAHHA" + (products))
   return (
     <div>
-      <ImageSliderApp/>
+      <ImageSliderApp />
       <Grid columns={4}>
         <Grid.Row>
-        {products.map((product) => (
-          <Grid.Column key={product.id}><Link to={`/products/${product.id}`}>
-            <Card style={{ margin: 10 }}>
-            <img src={product.productImage} />
-              {/* <Image src='/images/avatar/large/matthew.png' wrapped ui={false} /> */}
-              <Card.Content>
-                <Card.Header>{product.productBrandname}</Card.Header>
-                <Card.Meta>
-                  <span className='date'>{product.productShortname}</span>
-                </Card.Meta>
-                <Card.Description style={{ height: 60 }}>
-                {product.productName}
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <a>
-                  <Icon name='cart' />
-                  {product.unitPrice}TL
-                </a>
-              </Card.Content>
-            </Card></Link>
-          </Grid.Column>
+          {products.map((product) => (
+            <Grid.Column key={product.id}><Link to={`/products/${product.id}`}>
+              <Card style={{ margin: 10 }}>
+                <img src={product.productImage} />
+                <Card.Content>
+                  <Card.Header>{product.productBrandname}</Card.Header>
+                  <Card.Meta>
+                    <span className='date'>{product.productShortname}</span>
+                  </Card.Meta>
+                  <Card.Description style={{ height: 60 }}>
+                    {product.productName}
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                  <a>
+                    <Icon name='cart' />
+                    {product.unitPrice}TL
+                  </a>
+                </Card.Content>
+              </Card></Link>
+            </Grid.Column>
           ))
-        }
+          }
         </Grid.Row>
       </Grid>
       {/* <Table celled>

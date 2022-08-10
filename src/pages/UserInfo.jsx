@@ -20,17 +20,14 @@ const schema = Yup.object({
 
 export default function UserInfo() {
     const [user, setUser] = useState([]);
-
-    useEffect(()=>{
-      let userService = new UserService()
-      userService.getByUserId(localStorage.getItem("currentUser")).then(result=>setUser(result.data))
-    },[])
+    useEffect(() => {
+        let userService = new UserService()
+        userService.getByUserId(localStorage.getItem("currentUser")).then(result => setUser(result.data))
+    }, [])
     return (
         <div>
             <Header as="h1">Üyelik Bilgilerim</Header>
-            <p>Üyelik bilgilerinizi görüntülemek ve güncellemek için aşağıdaki formu kullanabilirsiniz.
-                <span style={{ color: "red" }}>(* ile işaretlenmiş alanların doldurulması zorunludur.)</span>
-            </p>
+            <p>Üyelik bilgilerinizi görüntülemek ve güncellemek için aşağıdaki formu kullanabilirsiniz.<span style={{ color: "red" }}>(* ile işaretlenmiş alanların doldurulması zorunludur.)</span></p>
             <Formik
                 initialValues={initialValues}
                 validationSchema={schema}
@@ -38,27 +35,22 @@ export default function UserInfo() {
                     console.log(values)
                     axios({
                         method: "put",
-                        //url:"http://localhost:8080/api/users/updateUser?userid=3&firstName=amanda&lastName=flower&email=easytigitiker&phoneNumber=5338888388&gender=kadin"
-                        url: "http://localhost:8080/api/users/updateUser?userid="+currentUser+"&firstName=" + values.firstName + "&lastName=" + values.lastName + "&email=" + values.email + "&phoneNumber=" + values.phoneNumber + "&gender=" + values.gender
-                        //data: values
+                        url: "http://localhost:8080/api/users/updateUser?userid=" + currentUser + "&firstName="
+                            + values.firstName + "&lastName=" + values.lastName + "&email=" + values.email +
+                            "&phoneNumber=" + values.phoneNumber + "&gender=" + values.gender
                     })
                 }}
             >
                 <Form className='ui form'>
-                    <KodlamaIoTextInput name="firstName" placeholder={user.firstName}/>
+                    <KodlamaIoTextInput name="firstName" placeholder={user.firstName} />
                     <KodlamaIoTextInput name="lastName" placeholder={user.lastName} />
                     <KodlamaIoTextInput name="email" placeholder={user.email} />
                     <KodlamaIoTextInput name="phoneNumber" placeholder={user.phoneNumber} />
                     <div role="group" aria-labelledby="my-radio-group">
-                        <label>
-                            <Icon name='venus' />Kadın<Field type="radio" name="gender" value="Kadın" />
-                        </label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>
-                            <Icon name='mars' />Erkek<Field type="radio" name="gender" value="Erkek" />
-
-                        </label>
+                        <label><Icon name='venus' />Kadın<Field type="radio" name="gender" value="Kadın" /></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><Icon name='mars' />Erkek<Field type="radio" name="gender" value="Erkek" /></label>
                     </div>
+                    <Button color="green" type='submit'>BİLGİLERİMİ KAYDET</Button>
                     {/* <Field component="select" name="category.categoryName" placeholder="select options">
                     <option value="Telefon">Telefon</option>
                     <option value="Bilgisayar">Bilgisayar</option>
@@ -71,7 +63,7 @@ export default function UserInfo() {
                     <option value="Ev Mutfak">Ev Mutfak</option>
                     <option value="Kişisel Bakım">Kişisel Bakım</option>
                     </Field> */}
-                    <Button color="green" type='submit'>BİLGİLERİMİ KAYDET</Button>
+
                 </Form>
             </Formik>
 

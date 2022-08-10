@@ -11,9 +11,6 @@ export default function Categories() {
     const handleChangeToCategory = (changestate) => {
         history.push("/")
         dispatch(changeToCategory(changestate));
-        // cartArray.push(product.productId);
-        //toast.success(`${product.productName} sepete eklendi!`);
-        //console.log("ahandaburdaarray"+cartArray);
       }
       let changestatetoggle = useSelector(state => state.changestatetoggle)
       console.log(changestatetoggle.payload+"EASICIKITIGER")

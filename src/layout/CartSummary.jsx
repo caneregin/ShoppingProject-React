@@ -9,9 +9,7 @@ export default function CartSummary() {
   let currentUser = localStorage.getItem("currentUser")
   const { cartItems } = useSelector(state => state.cart)
   let history = useHistory()
-  // const [data, setData] = useState({
-  //   productName: ""
-  // })
+
   const NavLink = () => {
     axios({
       method: "PUT",
@@ -20,17 +18,11 @@ export default function CartSummary() {
     })
     history.push("/temp")
   }
-  //cartItems.map((cartItembir) => (cartArray.push(cartItembir.product.productName)))
-
-
 
   let cartArray = []
   cartItems.map((cartItembir) => (cartArray.push(cartItembir.product)))
   console.log("ahahahah"+JSON.stringify(cartArray))
-  //cartArray.push({cartItems.cartItem.product.productName})
 
-  // setData(newData)
-  //console.log("newdatanin" + newData.productName)
   return (
     <div>
       <Dropdown item text='Sepetiniz'>

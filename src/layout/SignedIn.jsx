@@ -20,9 +20,6 @@ export default function SignedIn(props) {
     const handleChangetoToggle = (changestatetoggle) => {
         dispatch(changeToCategoryToggle(changestatetoggle));
         history.push("/user")
-        // cartArray.push(product.productId);
-        //toast.success(`${product.productName} sepete eklendi!`);
-        //console.log("ahandaburdaarray"+cartArray);
       }
 
     const logOut = () => {

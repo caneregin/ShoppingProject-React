@@ -24,9 +24,7 @@ export default function ProductDetail() {
   }, [])
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    // cartArray.push(product.productId);
     toast.success(`${product.productName} sepete eklendi!`);
-    //console.log("ahandaburdaarray"+cartArray);
   }
   const [productsForLook, setProductsForLook] = useState([]);
   let changeArrayForLook = []
